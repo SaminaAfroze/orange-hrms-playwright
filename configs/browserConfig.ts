@@ -1,4 +1,4 @@
 export const browserConfig = {
   browserName: 'chromium',
-  headless: false,
+  headless: true,
 };
