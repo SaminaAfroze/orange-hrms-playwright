@@ -4,7 +4,7 @@ import { expect } from "@playwright/test";
 
 
 
-test ("Add a new employee with valid details",async({page,login})=>{
+test ("Add a new candidate with valid details",async({page,login})=>{
 
      await login();
 

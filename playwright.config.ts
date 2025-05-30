@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 import { ENV } from './utils/env';
-import { browserConfig } from './configs/config';
+import { browserConfig } from './configs/browserConfig';
 
 // Optional: Map browser name to device profiles
 const deviceMap = {

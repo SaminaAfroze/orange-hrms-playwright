@@ -1,14 +1,18 @@
-import { test as base } from '@playwright/test';
+import { test as baseTest } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { ENV } from '../utils/env';
 
-export const test = base.extend<{
+export const test = baseTest.extend<{
   login: () => Promise<void>;
 }>({
   login: async ({ page }, use) => {
-    const loginPage = new LoginPage(page);
-    await page.goto(`${ENV.baseURL}/web/index.php/auth/login`);
-    await loginPage.login(ENV.username, ENV.password);
-    await use(() => Promise.resolve());
+    const doLogin = async () => {
+      const loginPage = new LoginPage(page);
+      await page.goto(`${ENV.baseURL}/web/index.php/auth/login`);
+      await loginPage.login(ENV.username, ENV.password);
+    };
+
+    await use(doLogin); // Pass the function to the test
   },
 });
+
