@@ -18,6 +18,7 @@ export class RecruitmentAddPage {
     readonly dateOfApplication:Locator;
     readonly consentToKeepDataCheckBox:Locator;
     readonly saveButton:Locator;
+    readonly emailError:Locator;
 
 
 
@@ -38,6 +39,7 @@ export class RecruitmentAddPage {
         this.dateOfApplication=page.locator('input[placeholder="yyyy-dd-mm"]')
         this.consentToKeepDataCheckBox=page.locator('form span i')
         this.saveButton =page.getByRole('button', { name: 'Save' })
+        this.emailError = page.locator('span.oxd-input-field-error-message', { hasText: 'Required' });
 
 
 
@@ -61,6 +63,9 @@ export class RecruitmentAddPage {
        await this.dateOfApplication.fill('2025-06-01');
        await this.consentToKeepDataCheckBox.click()
        await this.saveButton.click()
+    
+
+       
 
 
     }
