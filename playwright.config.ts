@@ -1,5 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
-import { ENV } from './configs/env';
+import { ENV } from './utils/env';
 import { browserConfig } from './configs/config';
 
 // Optional: Map browser name to device profiles
@@ -19,6 +19,7 @@ export default defineConfig({
 
   // Global context-level options
   use: {
+    screenshot:'only-on-failure',
     baseURL: ENV.baseURL,
     headless: browserConfig.headless,
     trace: 'on-first-retry',

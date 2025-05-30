@@ -1,6 +1,6 @@
 import { test as base } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
-import { ENV } from '../configs/env';
+import { ENV } from '../utils/env';
 
 export const test = base.extend<{
   login: () => Promise<void>;

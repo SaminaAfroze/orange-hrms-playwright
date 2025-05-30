@@ -1,5 +1,5 @@
 import { Page } from '@playwright/test';
-import { ENV } from '../configs/env';
+import { ENV } from '../utils/env';
 import { hash } from 'crypto';
 
 export class RecruitmentPage {
@@ -12,7 +12,7 @@ export class RecruitmentPage {
 
   async Jobtitle() {
     await this.page.click('div.oxd-select-text-input');//job title field
-    await this.page.getByText('Automation Tester4').click();
+    await this.page.getByText('Automation Tester').click();
 
   }
 
