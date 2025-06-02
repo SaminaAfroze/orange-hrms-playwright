@@ -12,7 +12,7 @@ export const test = baseTest.extend<{
       await loginPage.login(ENV.username, ENV.password);
     };
 
-    await use(doLogin); // Pass the function to the test
+    await use(doLogin); 
   },
 });
 
