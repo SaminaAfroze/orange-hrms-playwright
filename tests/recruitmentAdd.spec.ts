@@ -1,5 +1,5 @@
 import {RecruitmentAddPage} from "../pages/RecruitmentAddPage"
-import { test } from "../fixtures/login"
+import { test } from "../fixtures/loginFixture"
 import { expect } from "@playwright/test";
 
 

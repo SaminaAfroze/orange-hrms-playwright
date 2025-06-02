@@ -71,7 +71,7 @@ export class RecruitmentAddPage {
     }
 
       async uploadResumeFile() {
-        const filePath = path.resolve(__dirname, '../data/resume.pdf');
+        const filePath = path.resolve(__dirname, '../testData/resume.pdf');
         await this.uploadResume.setInputFiles(filePath);
     }
 
