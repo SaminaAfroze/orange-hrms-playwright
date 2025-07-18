@@ -12,8 +12,15 @@ export const test = baseTest.extend<{
       await page.goto(`${ENV.baseURL}/web/index.php/auth/login`);
       await loginPage.login(ENV.username, ENV.password);
     };
-
-    await use(doLogin); 
+    await use(doLogin);
   },
 });
+
+// add this to automatically login before each test
+test.beforeEach(async ({ login }) => {
+  await login();
+});
+
+
+
 
