@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "start-server": "powershell -ExecutionPolicy Bypass -File scripts/start-xampp.ps1",
+    "wait-site": "tsx scripts/waitForSite.ts",
+    "test": "npm run start-server && tsx scripts/waitForSite.ts && npx playwright test; npm run stop-xampp"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -11,9 +15,13 @@
   "devDependencies": {
     "@playwright/test": "^1.52.0",
     "@types/node": "^22.15.21",
-    "monocart-reporter": "^2.9.21"
+    "@types/node-fetch": "^2.6.13",
+    "monocart-reporter": "^2.9.21",
+    "node-fetch": "^2.6.7",
+    "tsx": "^3.12.7"
   },
   "dependencies": {
-    "dotenv": "^16.5.0"
+    "dotenv": "^16.5.0",
+    "node-fetch": "^2.7.0"
   }
 }

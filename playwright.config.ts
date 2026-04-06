@@ -1,5 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
-import { ENV } from './utils/env';
+import { env } from './utils/env';
 import { browserConfig } from './config/browserConfig';
 
 // Optional: Map browser name to device profiles
@@ -11,23 +11,26 @@ const deviceMap = {
 
 export default defineConfig({
   testDir: './tests',
-  fullyParallel: true,
+  fullyParallel: false, // one by one test run
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 8 : undefined,
-  // reporter: 'html',
+  retries: 0,
+  workers: 1, // sequential run
 
-  // Global context-level options
   use: {
-    screenshot:'only-on-failure',
-    baseURL: ENV.baseURL,
-    headless: false,
+    baseURL: env.BASE_URL,
+    headless: env.HEADLESS,
     trace: 'on-first-retry',
-    actionTimeout: 10000, // 10 seconds max per action (e.g., click, fill)
-    navigationTimeout: 15000, // 15 seconds for page navigations
-
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
   },
-  
+
+  webServer: {
+    command:
+      'powershell -ExecutionPolicy Bypass -File ./scripts/start-xampp.ps1',
+    url: env.BASE_URL,
+    reuseExistingServer: true,
+    timeout: 120 * 1000,
+  },
 
   // Dynamically select browser and device settings from config
   projects: [
